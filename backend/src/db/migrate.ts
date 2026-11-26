@@ -35,5 +35,24 @@ export async function runMigrations(pool: Pool): Promise<void> {
 
     CREATE INDEX IF NOT EXISTS idx_events_organizer_id ON events (organizer_id);
     CREATE INDEX IF NOT EXISTS idx_events_status ON events (status);
+
+    CREATE TABLE IF NOT EXISTS tickets (
+      id TEXT PRIMARY KEY,
+      code TEXT UNIQUE NOT NULL,
+      event_id TEXT NOT NULL REFERENCES events(id) ON DELETE CASCADE,
+      user_id TEXT REFERENCES users(id) ON DELETE SET NULL,
+      buyer_email TEXT NOT NULL,
+      channel TEXT NOT NULL CHECK (channel IN ('web', 'partner')),
+      price_cents INTEGER NOT NULL CHECK (price_cents > 0),
+      status TEXT NOT NULL CHECK (status IN ('pending', 'confirmed', 'declined', 'cancelled', 'refunded')),
+      checked_in BOOLEAN NOT NULL DEFAULT FALSE,
+      checked_in_at TIMESTAMPTZ,
+      card_last4 TEXT NOT NULL,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_tickets_event_status ON tickets (event_id, status);
+    CREATE INDEX IF NOT EXISTS idx_tickets_user_id ON tickets (user_id);
   `);
 }

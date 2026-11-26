@@ -4,6 +4,7 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 import { EventManagePage } from './pages/EventManagePage';
 import { LoginPage } from './pages/LoginPage';
+import { MyTicketsPage } from './pages/MyTicketsPage';
 import { OrganizerDashboardPage } from './pages/OrganizerDashboardPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { StorefrontPage } from './pages/StorefrontPage';
@@ -17,6 +18,14 @@ export function App() {
             <Route path="/" element={<StorefrontPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/cadastro" element={<RegisterPage />} />
+            <Route
+              path="/meus-ingressos"
+              element={
+                <ProtectedRoute role="participant">
+                  <MyTicketsPage />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/organizador"
               element={
