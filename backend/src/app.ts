@@ -8,6 +8,8 @@ import { Pool } from 'pg';
 import { config } from './config.js';
 import { makeAuthHelpers } from './middleware/auth.js';
 import { registerAuthRoutes } from './routes/auth.js';
+import { registerEventRoutes } from './routes/events.js';
+import { registerPartnerRoutes } from './routes/partner.js';
 
 export interface AppOptions {
   pool: Pool;
@@ -29,7 +31,6 @@ export async function buildApp(options: AppOptions): Promise<FastifyInstance> {
     await auth.attachSession(request);
   });
 
-  // Handle malformed JSON cleanly (partner API requires 422 invalid_request on purchase body errors)
   app.setErrorHandler((err: Error & { statusCode?: number; code?: string }, request, reply) => {
     if (err.code === 'FST_ERR_CTP_INVALID_JSON_BODY' || err.statusCode === 400) {
       if (request.url.startsWith('/api/partner/')) {
@@ -42,6 +43,8 @@ export async function buildApp(options: AppOptions): Promise<FastifyInstance> {
   });
 
   await registerAuthRoutes(app, pool, auth);
+  await registerEventRoutes(app, pool, auth);
+  await registerPartnerRoutes(app, pool, auth);
 
   if (serveStatic) {
     const __dirname = path.dirname(fileURLToPath(import.meta.url));
