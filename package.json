@@ -1,0 +1,11 @@
+{
+  "name": "catraca",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Catraca - MVP de venda de ingressos para eventos pequenos",
+  "scripts": {
+    "up": "node scripts/up.mjs",
+    "down": "node scripts/down.mjs",
+    "gates": "node scripts/gates.mjs"
+  }
+}

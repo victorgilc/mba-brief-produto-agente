@@ -6,11 +6,11 @@
     "F01": {
       "name": "Fundação, Autenticação, RBAC e Chave de Parceiro",
       "wave": 1,
-      "status": "pending",
+      "status": "completed",
       "spec": "docs/features/F01-fundacao-auth-rbac/spec.md",
       "plan": "docs/features/F01-fundacao-auth-rbac/plan.md",
       "contract": "docs/features/F01-fundacao-auth-rbac/contract.md",
-      "latestReport": null
+      "latestReport": "docs/features/F01-fundacao-auth-rbac/reports/eval-01.md"
     },
     "F02": {
       "name": "Gestão de Eventos, Vitrine Pública e Listagem da API de Parceiros",
