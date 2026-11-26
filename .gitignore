@@ -1,0 +1,31 @@
+# Never commit the challenge brief
+descritivo
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+**/dist/
+build/
+**/build/
+*.tsbuildinfo
+
+# Environment and local state
+.env
+.env.local
+.env.*.local
+
+# Logs and OS files
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Test coverage / artifacts
+coverage/
+.vitest/
+
+# Temporary worktrees
+.worktrees/

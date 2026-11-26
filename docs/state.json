@@ -1,0 +1,61 @@
+{
+  "project": "Catraca",
+  "prd": "docs/prd.md",
+  "updatedAt": "2026-11-26T18:22:00-03:00",
+  "features": {
+    "F01": {
+      "name": "Fundação, Autenticação, RBAC e Chave de Parceiro",
+      "wave": 1,
+      "status": "pending",
+      "spec": "docs/features/F01-fundacao-auth-rbac/spec.md",
+      "plan": "docs/features/F01-fundacao-auth-rbac/plan.md",
+      "contract": "docs/features/F01-fundacao-auth-rbac/contract.md",
+      "latestReport": null
+    },
+    "F02": {
+      "name": "Gestão de Eventos, Vitrine Pública e Listagem da API de Parceiros",
+      "wave": 2,
+      "status": "pending",
+      "spec": "docs/features/F02-eventos-vitrine/spec.md",
+      "plan": "docs/features/F02-eventos-vitrine/plan.md",
+      "contract": "docs/features/F02-eventos-vitrine/contract.md",
+      "latestReport": null
+    },
+    "F03": {
+      "name": "Motor de Compras, Concorrência, Gateway Simulado, API de Parceiros e Meus Ingressos",
+      "wave": 3,
+      "status": "pending",
+      "spec": "docs/features/F03-compras-gateway-ingressos/spec.md",
+      "plan": "docs/features/F03-compras-gateway-ingressos/plan.md",
+      "contract": "docs/features/F03-compras-gateway-ingressos/contract.md",
+      "latestReport": null
+    },
+    "F04": {
+      "name": "Check-in de Ingressos na Página de Gestão",
+      "wave": 4,
+      "status": "pending",
+      "spec": "docs/features/F04-checkin/spec.md",
+      "plan": "docs/features/F04-checkin/plan.md",
+      "contract": "docs/features/F04-checkin/contract.md",
+      "latestReport": null
+    },
+    "F05": {
+      "name": "Cancelamento Irreversível de Eventos e Reconciliação com Gateway",
+      "wave": 4,
+      "status": "pending",
+      "spec": "docs/features/F05-cancelamento-estorno/spec.md",
+      "plan": "docs/features/F05-cancelamento-estorno/plan.md",
+      "contract": "docs/features/F05-cancelamento-estorno/contract.md",
+      "latestReport": null
+    },
+    "F06": {
+      "name": "Painel Consolidado de Métricas e Receita do Evento",
+      "wave": 5,
+      "status": "pending",
+      "spec": "docs/features/F06-painel-metricas/spec.md",
+      "plan": "docs/features/F06-painel-metricas/plan.md",
+      "contract": "docs/features/F06-painel-metricas/contract.md",
+      "latestReport": null
+    }
+  }
+}
