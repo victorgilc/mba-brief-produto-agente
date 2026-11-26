@@ -210,17 +210,16 @@ describe('F02 - Gestão de Eventos, Vitrine Pública e API de Parceiros', () => 
     expect(updated.json().event.priceCents).toBe(15000);
 
     // Simula 3 vagas ocupadas para comprovar rejeição de redução abaixo da ocupação (R03)
-    await pool.query(`
-      CREATE TABLE IF NOT EXISTS tickets (
-        id TEXT PRIMARY KEY,
-        event_id TEXT NOT NULL REFERENCES events(id),
-        status TEXT NOT NULL
-      );
-      INSERT INTO tickets (id, event_id, status) VALUES
-        ('t1', '${eventId}', 'confirmed'),
-        ('t2', '${eventId}', 'pending'),
-        ('t3', '${eventId}', 'confirmed');
-    `);
+    await pool.query(
+      `
+      INSERT INTO tickets (id, code, event_id, buyer_email, channel, price_cents, status, card_last4)
+      VALUES
+        ('t1', 'CODE0001', $1, 'a@ex.com', 'partner', 15000, 'confirmed', '0001'),
+        ('t2', 'CODE0002', $1, 'b@ex.com', 'partner', 15000, 'pending', '0003'),
+        ('t3', 'CODE0003', $1, 'c@ex.com', 'partner', 15000, 'confirmed', '0001')
+      `,
+      [eventId]
+    );
 
     const reduceBelow = await app.inject({
       method: 'PUT',

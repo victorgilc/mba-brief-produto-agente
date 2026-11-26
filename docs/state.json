@@ -24,11 +24,11 @@
     "F03": {
       "name": "Motor de Compras, Concorrência, Gateway Simulado, API de Parceiros e Meus Ingressos",
       "wave": 3,
-      "status": "pending",
+      "status": "completed",
       "spec": "docs/features/F03-compras-gateway-ingressos/spec.md",
       "plan": "docs/features/F03-compras-gateway-ingressos/plan.md",
       "contract": "docs/features/F03-compras-gateway-ingressos/contract.md",
-      "latestReport": null
+      "latestReport": "docs/features/F03-compras-gateway-ingressos/reports/eval-01.md"
     },
     "F04": {
       "name": "Check-in de Ingressos na Página de Gestão",
