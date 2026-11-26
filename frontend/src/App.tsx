@@ -2,8 +2,9 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
+import { EventManagePage } from './pages/EventManagePage';
 import { LoginPage } from './pages/LoginPage';
-import { OrganizerPlaceholderPage } from './pages/OrganizerPlaceholderPage';
+import { OrganizerDashboardPage } from './pages/OrganizerDashboardPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { StorefrontPage } from './pages/StorefrontPage';
 
@@ -20,7 +21,7 @@ export function App() {
               path="/organizador"
               element={
                 <ProtectedRoute role="organizer">
-                  <OrganizerPlaceholderPage />
+                  <OrganizerDashboardPage />
                 </ProtectedRoute>
               }
             />
@@ -28,7 +29,7 @@ export function App() {
               path="/organizador/eventos/:eventId"
               element={
                 <ProtectedRoute role="organizer">
-                  <OrganizerPlaceholderPage />
+                  <EventManagePage />
                 </ProtectedRoute>
               }
             />

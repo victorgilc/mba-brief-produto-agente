@@ -19,5 +19,21 @@ export async function runMigrations(pool: Pool): Promise<void> {
     );
 
     CREATE INDEX IF NOT EXISTS idx_sessions_user_id ON sessions (user_id);
+
+    CREATE TABLE IF NOT EXISTS events (
+      id TEXT PRIMARY KEY,
+      organizer_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      name TEXT NOT NULL,
+      starts_at TIMESTAMPTZ NOT NULL,
+      location TEXT NOT NULL,
+      capacity INTEGER NOT NULL CHECK (capacity >= 1),
+      price_cents INTEGER NOT NULL CHECK (price_cents > 0),
+      status TEXT NOT NULL DEFAULT 'draft' CHECK (status IN ('draft', 'published', 'cancelled')),
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_events_organizer_id ON events (organizer_id);
+    CREATE INDEX IF NOT EXISTS idx_events_status ON events (status);
   `);
 }

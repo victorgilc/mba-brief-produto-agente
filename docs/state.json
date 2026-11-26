@@ -15,11 +15,11 @@
     "F02": {
       "name": "Gestão de Eventos, Vitrine Pública e Listagem da API de Parceiros",
       "wave": 2,
-      "status": "pending",
+      "status": "completed",
       "spec": "docs/features/F02-eventos-vitrine/spec.md",
       "plan": "docs/features/F02-eventos-vitrine/plan.md",
       "contract": "docs/features/F02-eventos-vitrine/contract.md",
-      "latestReport": null
+      "latestReport": "docs/features/F02-eventos-vitrine/reports/eval-01.md"
     },
     "F03": {
       "name": "Motor de Compras, Concorrência, Gateway Simulado, API de Parceiros e Meus Ingressos",
