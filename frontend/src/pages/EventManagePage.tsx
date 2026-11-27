@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { CancelEventSection } from '../components/CancelEventSection';
 import { CheckinSection } from '../components/CheckinSection';
 import { ApiError, apiFetch, formatBRL, formatDateTime } from '../lib/api';
 import { OrganizerEvent } from './OrganizerDashboardPage';
@@ -172,6 +173,11 @@ export function EventManagePage() {
       />
 
       {/* Slot: Cancelamento do evento (F05) */}
+      <CancelEventSection
+        eventId={event.id}
+        eventStatus={event.status}
+        onCancelled={loadEvent}
+      />
 
       {!isCancelled && (
         <div className="card">

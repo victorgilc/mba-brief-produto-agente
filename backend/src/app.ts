@@ -8,6 +8,7 @@ import { Pool } from 'pg';
 import { config } from './config.js';
 import { makeAuthHelpers } from './middleware/auth.js';
 import { registerAuthRoutes } from './routes/auth.js';
+import { registerCancellationRoutes } from './routes/cancellation.js';
 import { registerCheckinRoutes } from './routes/checkin.js';
 import { registerEventRoutes } from './routes/events.js';
 import { registerPartnerRoutes } from './routes/partner.js';
@@ -67,6 +68,7 @@ export async function buildApp(options: AppOptions): Promise<FastifyInstance> {
   await registerEventRoutes(app, pool, auth);
   await registerPartnerRoutes(app, pool, auth, gateway);
   await registerPurchaseRoutes(app, pool, auth, gateway);
+  await registerCancellationRoutes(app, pool, auth);
   await registerCheckinRoutes(app, pool, auth);
 
   if (serveStatic) {
