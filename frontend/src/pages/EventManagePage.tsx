@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { CancelEventSection } from '../components/CancelEventSection';
+import { CheckinSection } from '../components/CheckinSection';
 import { ApiError, apiFetch, formatBRL, formatDateTime } from '../lib/api';
 import { OrganizerEvent } from './OrganizerDashboardPage';
 
@@ -45,7 +46,9 @@ export function EventManagePage() {
 
   async function loadEvent() {
     if (!eventId) return;
-    setLoading(true);
+    if (!event || event.id !== eventId) {
+      setLoading(true);
+    }
     setAccessError(null);
     try {
       const data = await apiFetch<{ event: OrganizerEvent }>(
@@ -163,7 +166,11 @@ export function EventManagePage() {
 
       {/* Slot: Painel do evento (F06) */}
 
-      {/* Slot: Check-in (F04) */}
+      <CheckinSection
+        eventId={event.id}
+        eventStatus={event.status}
+        onCheckedIn={loadEvent}
+      />
 
       {/* Slot: Cancelamento do evento (F05) */}
       <CancelEventSection
