@@ -1,7 +1,7 @@
 {
   "project": "Catraca",
   "prd": "docs/prd.md",
-  "updatedAt": "2026-11-26T18:22:00-03:00",
+  "updatedAt": "2026-11-27T17:33:00-03:00",
   "features": {
     "F01": {
       "name": "Fundação, Autenticação, RBAC e Chave de Parceiro",
@@ -33,20 +33,20 @@
     "F04": {
       "name": "Check-in de Ingressos na Página de Gestão",
       "wave": 4,
-      "status": "pending",
+      "status": "completed",
       "spec": "docs/features/F04-checkin/spec.md",
       "plan": "docs/features/F04-checkin/plan.md",
       "contract": "docs/features/F04-checkin/contract.md",
-      "latestReport": null
+      "latestReport": "docs/features/F04-checkin/reports/eval-01.md"
     },
     "F05": {
       "name": "Cancelamento Irreversível de Eventos e Reconciliação com Gateway",
       "wave": 4,
-      "status": "pending",
+      "status": "completed",
       "spec": "docs/features/F05-cancelamento-estorno/spec.md",
       "plan": "docs/features/F05-cancelamento-estorno/plan.md",
       "contract": "docs/features/F05-cancelamento-estorno/contract.md",
-      "latestReport": null
+      "latestReport": "docs/features/F05-cancelamento-estorno/reports/eval-01.md"
     },
     "F06": {
       "name": "Painel Consolidado de Métricas e Receita do Evento",
