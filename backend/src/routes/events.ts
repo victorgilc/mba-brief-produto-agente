@@ -10,6 +10,7 @@ import {
   publishEvent,
   updateEvent
 } from '../services/events.js';
+import { getEventPanel } from '../services/panel.js';
 
 export async function registerEventRoutes(
   app: FastifyInstance,
@@ -68,7 +69,12 @@ export async function registerEventRoutes(
           request.authUser!.id,
           request.params.eventId
         );
-        return reply.code(200).send({ event });
+        const panel = await getEventPanel(
+          pool,
+          request.authUser!.id,
+          request.params.eventId
+        );
+        return reply.code(200).send({ event, panel });
       } catch (err) {
         if (err instanceof DomainError) {
           return reply

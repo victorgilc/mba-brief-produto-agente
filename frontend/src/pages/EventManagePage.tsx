@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { CancelEventSection } from '../components/CancelEventSection';
 import { CheckinSection } from '../components/CheckinSection';
+import { EventPanel, EventPanelData } from '../components/EventPanel';
 import { ApiError, apiFetch, formatBRL, formatDateTime } from '../lib/api';
 import { OrganizerEvent } from './OrganizerDashboardPage';
 
@@ -32,6 +33,7 @@ function parsePriceFlexible(raw: string): number {
 export function EventManagePage() {
   const { eventId } = useParams<{ eventId: string }>();
   const [event, setEvent] = useState<OrganizerEvent | null>(null);
+  const [panel, setPanel] = useState<EventPanelData | null>(null);
   const [loading, setLoading] = useState(true);
   const [accessError, setAccessError] = useState<string | null>(null);
 
@@ -51,10 +53,11 @@ export function EventManagePage() {
     }
     setAccessError(null);
     try {
-      const data = await apiFetch<{ event: OrganizerEvent }>(
+      const data = await apiFetch<{ event: OrganizerEvent; panel: EventPanelData }>(
         `/api/organizer/events/${eventId}`
       );
       setEvent(data.event);
+      setPanel(data.panel);
       setName(data.event.name);
       setStartsAt(toDateTimeLocal(data.event.startsAt));
       setLocation(data.event.location);
@@ -62,6 +65,7 @@ export function EventManagePage() {
       setPrice((data.event.priceCents / 100).toFixed(2));
     } catch {
       setEvent(null);
+      setPanel(null);
       setAccessError('Evento não encontrado ou acesso negado.');
     } finally {
       setLoading(false);
@@ -94,6 +98,7 @@ export function EventManagePage() {
       );
       setEvent(data.event);
       setFormSuccess('Evento atualizado com sucesso.');
+      await loadEvent();
     } catch (err) {
       setFormError(err instanceof ApiError ? err.message : 'Erro ao atualizar evento');
     } finally {
@@ -112,6 +117,7 @@ export function EventManagePage() {
       );
       setEvent(data.event);
       setFormSuccess('Evento publicado com sucesso.');
+      await loadEvent();
     } catch (err) {
       setFormError(err instanceof ApiError ? err.message : 'Erro ao publicar evento');
     }
@@ -164,7 +170,7 @@ export function EventManagePage() {
         </div>
       </div>
 
-      {/* Slot: Painel do evento (F06) */}
+      {panel && <EventPanel panel={panel} onRefresh={loadEvent} />}
 
       <CheckinSection
         eventId={event.id}

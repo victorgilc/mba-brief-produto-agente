@@ -11,6 +11,7 @@ import { registerAuthRoutes } from './routes/auth.js';
 import { registerCancellationRoutes } from './routes/cancellation.js';
 import { registerCheckinRoutes } from './routes/checkin.js';
 import { registerEventRoutes } from './routes/events.js';
+import { registerPanelRoutes } from './routes/panel.js';
 import { registerPartnerRoutes } from './routes/partner.js';
 import { registerPurchaseRoutes } from './routes/purchases.js';
 import { GatewayDelayMode, SimulatedGateway } from './services/gateway.js';
@@ -70,6 +71,7 @@ export async function buildApp(options: AppOptions): Promise<FastifyInstance> {
   await registerPurchaseRoutes(app, pool, auth, gateway);
   await registerCancellationRoutes(app, pool, auth);
   await registerCheckinRoutes(app, pool, auth);
+  await registerPanelRoutes(app, pool, auth);
 
   if (serveStatic) {
     const __dirname = path.dirname(fileURLToPath(import.meta.url));
