@@ -1,7 +1,7 @@
 {
   "project": "Catraca",
   "prd": "docs/prd.md",
-  "updatedAt": "2026-11-27T17:33:00-03:00",
+  "updatedAt": "2026-11-27T17:42:00-03:00",
   "features": {
     "F01": {
       "name": "Fundação, Autenticação, RBAC e Chave de Parceiro",
@@ -51,11 +51,11 @@
     "F06": {
       "name": "Painel Consolidado de Métricas e Receita do Evento",
       "wave": 5,
-      "status": "pending",
+      "status": "completed",
       "spec": "docs/features/F06-painel-metricas/spec.md",
       "plan": "docs/features/F06-painel-metricas/plan.md",
       "contract": "docs/features/F06-painel-metricas/contract.md",
-      "latestReport": null
+      "latestReport": "docs/features/F06-painel-metricas/reports/eval-01.md"
     }
   }
 }
